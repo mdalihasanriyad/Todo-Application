@@ -18,8 +18,8 @@ const TodoList = () => {
           <ul className="max-h-[300px] border border-slate-600 p-2 shadow-lg shadow-gray-800 gap-2">
             {todoList?.length > 0 && (
               <>
-                {todoList?.map((item) => (
-                  <TodoItem key={item?._id} item={item} />
+                {todoList?.map((item, index) => (
+                  <TodoItem key={index} item={item} />
                 ))}
               </>
             )}
@@ -50,8 +50,13 @@ const TodoList = () => {
               </span>{" "}
               all todos
             </p>
-            <div className="flex">
-              <button onClick={() => setShowRemove(false)}>No</button>
+            <div className="flex mt-8  justify-around items-center">
+              <button
+                onClick={() => setShowRemove(false)}
+                className="px-6 py-2 text-base text-orange-500 hover:text-red-500 font-semibold bg-transparent border-[1px] border-gray-500 duration-300 rounded-md"
+              >
+                No
+              </button>
               <button
                 onClick={() => {
                   dispatch(
@@ -60,6 +65,7 @@ const TodoList = () => {
                     setShowRemove(false)
                   );
                 }}
+                className="px-6 py-2 text-base text-orange-500 hover:text-red-500 font-semibold bg-transparent border-[1px] border-gray-500 duration-300 rounded-md"
               >
                 Yes
               </button>
